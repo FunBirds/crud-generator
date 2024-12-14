@@ -6,7 +6,7 @@ use Foxdevuz\CrudGenerator\Console\MakeCrud;
 
 class CrudGeneratorServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function register(): void
     {
         // Register the Artisan command
         $this->commands([
@@ -14,7 +14,7 @@ class CrudGeneratorServiceProvider extends ServiceProvider
         ]);
     }
 
-    public function boot()
+    public function boot(): void
     {
         // Publish the stubs so users can customize them
         $this->publishes([

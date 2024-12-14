@@ -14,7 +14,7 @@ class MakeCrud extends Command
 
     protected $description = 'Generate a CRUD Controller bound to a Model';
 
-    public function handle()
+    public function handle(): int
     {
         $controllerName = $this->option('controller');
         $modelName = $this->option('model');

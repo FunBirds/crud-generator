@@ -20,9 +20,9 @@
     "prefer-stable": true,
     "require": {
         "php": "^8.0",
-        "illuminate/support": "10.48.25",
-        "illuminate/console": "10.48.25",
-        "illuminate/filesystem": "10.48.25"
+        "illuminate/support": "^10.*",
+        "illuminate/console": "^10.*",
+        "illuminate/filesystem": "^10.*"
     },
     "extra": {
         "laravel": {

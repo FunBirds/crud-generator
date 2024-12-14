@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\{{modelName}};
+use Illuminate\Http\Request;
+
+class {{controllerName}} extends Controller
+{
+    public function index()
+    {
+        $items = {{modelName}}::paginate(50);
+        return response()->json($items);
+    }
+
+    public function show($id)
+    {
+        $item = {{modelName}}::findOrFail($id);
+        return response()->json($item);
+    }
+
+    public function store(Request $request)
+    {
+        $item = {{modelName}}::create($request->all());
+        return response()->json($item, 201);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $item = {{modelName}}::findOrFail($id);
+        $item->update($request->all());
+        return response()->json($item);
+    }
+
+    public function destroy($id)
+    {
+        {{modelName}}::destroy($id);
+        return response()->json(null, 204);
+    }
+}

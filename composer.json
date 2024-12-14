@@ -1,8 +1,7 @@
 {
     "name": "foxdevuz/crud-generator",
     "description": "A Laravel package to generate CRUD controllers.",
-    "version": "1.0.1",
-    "type": "library",
+    "version": "1.0.1-alpha",
     "keywords": ["laravel", "crud", "generator"],
     "license": "MIT",
     "autoload": {
@@ -20,8 +19,9 @@
     "prefer-stable": true,
     "require": {
         "php": "^8.0",
-        "illuminate/console": "^10.0",
-        "illuminate/filesystem": "^10.0"
+        "illuminate/support": "^11.0.0",
+        "illuminate/console": "^11.0.0",
+        "illuminate/filesystem": "^11.0.0"
     },
     "extra": {
         "laravel": {

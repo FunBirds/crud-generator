@@ -1,0 +1,29 @@
+{
+  "config": [
+    {
+      "url": "/users",
+      "model": "User",
+      "controller": "UserController",
+      "fields": [
+        {
+            "store": {
+                "name": "required",
+                "email": "required|email",
+                "password": "required"
+            }
+        },
+        {
+            "update": {
+                "name": "sometimes",
+                "email": "sometimes|email",
+                "password": "sometimes"
+            }
+        }
+      ],
+      "except": [
+        "create",
+        "update"
+      ]
+    }
+  ]
+}

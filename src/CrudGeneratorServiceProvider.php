@@ -8,7 +8,6 @@ class CrudGeneratorServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        // Register the Artisan command
         $this->commands([
             MakeCrud::class,
         ]);
@@ -16,9 +15,8 @@ class CrudGeneratorServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        // Publish the stubs so users can customize them
         $this->publishes([
-            __DIR__ . '/stubs/crud.controller.stub' => resource_path('stubs/crud.controller.stub'),
-        ], 'crud-generator-stubs');
+            __DIR__ . '/../crud-config.json' => base_path('crud-config.json'),
+        ], 'crud-generator-config');
     }
 }

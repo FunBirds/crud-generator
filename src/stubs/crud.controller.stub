@@ -3,38 +3,97 @@
 namespace App\Http\Controllers;
 
 use App\Models\{{modelName}};
+use App\Http\Requests\{{requestName}};
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 
 class {{controllerName}} extends Controller
 {
-    public function index()
+    /**
+     * Display a listing of the resource.
+     */
+    public function index(): JsonResponse
     {
-        $items = {{modelName}}::paginate(50);
-        return response()->json($items);
+        $items = {{modelName}}::paginate(10);
+
+        return response()->json([
+            'success' => true,
+            'data' => $items,
+            'message' => '{{modelName}} list retrieved successfully.'
+        ]);
     }
 
-    public function show($id)
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store({{storeRequestName}} $request): JsonResponse
     {
-        $item = {{modelName}}::findOrFail($id);
-        return response()->json($item);
+        try {
+            $item = {{modelName}}::create($request->validated());
+
+            return response()->json([
+                'success' => true,
+                'data' => $item,
+                'message' => '{{modelName}} created successfully.'
+            ], 201);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error creating {{modelName}}: ' . $e->getMessage()
+            ], 500);
+        }
     }
 
-    public function store(Request $request)
+    /**
+     * Display the specified resource.
+     */
+    public function show({{modelName}} $id): JsonResponse
     {
-        $item = {{modelName}}::create($request->all());
-        return response()->json($item, 201);
+        return response()->json([
+            'success' => true,
+            'data' => $id,
+            'message' => '{{modelName}} retrieved successfully.'
+        ]);
     }
 
-    public function update(Request $request, $id)
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update({{updateRequestName}} $request, {{modelName}} $id): JsonResponse
     {
-        $item = {{modelName}}::findOrFail($id);
-        $item->update($request->all());
-        return response()->json($item);
+        try {
+            $id->update($request->validated());
+
+            return response()->json([
+                'success' => true,
+                'data' => $id,
+                'message' => '{{modelName}} updated successfully.'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error updating {{modelName}}: ' . $e->getMessage()
+            ], 500);
+        }
     }
 
-    public function destroy($id)
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy({{modelName}} $id): JsonResponse
     {
-        {{modelName}}::destroy($id);
-        return response()->json(null, 204);
+        try {
+            $id->delete();
+
+            return response()->json([
+                'success' => true,
+                'message' => '{{modelName}} deleted successfully.'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error deleting {{modelName}}: ' . $e->getMessage()
+            ], 500);
+        }
     }
 }

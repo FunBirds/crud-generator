@@ -21,7 +21,8 @@
         "php": "^8.0",
         "illuminate/support": "^11.0.0",
         "illuminate/console": "^11.0.0",
-        "illuminate/filesystem": "^11.0.0"
+        "illuminate/filesystem": "^11.0.0",
+        "laravel/framework": "^11.0.0"
     },
     "extra": {
         "laravel": {
